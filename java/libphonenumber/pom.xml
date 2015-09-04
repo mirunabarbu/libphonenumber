@@ -15,16 +15,34 @@
 
   <build>
     <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <directory>src/com/google/i18n/phonenumbers</directory>
+          <excludes>
+            <exclude>src/com/google/i18n/phonenumbers/SingleFileMetadataSourceImpl.java</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
     <testSourceDirectory>test</testSourceDirectory>
     <resources>
       <resource>
         <directory>src/com/google/i18n/phonenumbers/data</directory>
+        <excludes>
+          <exclude>src/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoFile</exclude>
+        </excludes>
         <targetPath>com/google/i18n/phonenumbers/data</targetPath>
       </resource>
     </resources>
     <testResources>
       <testResource>
         <directory>test/com/google/i18n/phonenumbers/data</directory>
+        <excludes>
+          <exclude>test/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTestingFile</exclude>
+        </excludes>
         <targetPath>com/google/i18n/phonenumbers/data</targetPath>
       </testResource>
     </testResources>
